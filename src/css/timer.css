@@ -1,0 +1,50 @@
+body {
+  text-align: center;
+  background-color: darkgrey;
+}
+
+a {
+  text-decoration: none;
+  color: brown;
+  font-size: 20px;
+}
+
+input {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  width: 200px;
+  height: 40px;
+  border-color: brown;
+  padding-left: 15px;
+}
+
+.timer {
+  display: flex;
+  gap: 25px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: 30px;
+}
+
+.label {
+  font-style: italic;
+}
+
+button {
+  text-align: center;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 140px;
+  height: 36px;
+  border: none;
+  background-color: cornflowerblue;
+}

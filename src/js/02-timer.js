@@ -2,6 +2,8 @@ import flatpickr from "flatpickr";
 
 import "flatpickr/dist/flatpickr.min.css";
 
+import Notiflix from 'notiflix';
+
 
 const refs = {
     
@@ -31,7 +33,7 @@ const options = {
     onClose(selectedDates) {
         console.log(selectedDates);
         if (selectedDates[0] < Date.now()) {
-            alert('Please choose a date in the future');
+            Notiflix.Notify.failure('Please choose a date in the future');
         }
         else {
             refs.btnStart.disabled = false;
@@ -65,6 +67,7 @@ function onStart() {
         if (deltaTime < 1000) {
             clearInterval(timeId);
             refs.btnStart.disabled = true;
+            Notiflix.Notify.success('Goal achieved!!');
         }
 }, TIME_DELAY);
 }

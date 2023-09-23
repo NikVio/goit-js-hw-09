@@ -4,7 +4,7 @@ const refs = {
     stopBtn: document.querySelector('button[data-stop]'),
 }
 
-console.log(refs);
+refs.stopBtn.disabled = true;
 
 let timerId = null;
 INTERVAL_DELAY = 1000;
@@ -19,11 +19,15 @@ refs.startBtn.addEventListener('click', () => {
     }, INTERVAL_DELAY);
    
     refs.startBtn.disabled = timerId;
+    refs.stopBtn.disabled = false;
+
+    console.log('start');
     
 });
 
 refs.stopBtn.addEventListener('click', () => {
     clearInterval(timerId);
     refs.startBtn.disabled = !timerId;
+    refs.stopBtn.disabled = true;
     
 })

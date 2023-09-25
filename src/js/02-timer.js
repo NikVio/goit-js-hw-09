@@ -20,7 +20,7 @@ const refs = {
 
 
 
-TIME_DELAY = 1000;
+const TIME_DELAY = 1000;
 
 refs.btnStart.disabled = true;
 

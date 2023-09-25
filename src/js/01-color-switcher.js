@@ -7,7 +7,7 @@ const refs = {
 refs.stopBtn.disabled = true;
 
 let timerId = null;
-INTERVAL_DELAY = 1000;
+const INTERVAL_DELAY = 1000;
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 }
@@ -21,7 +21,7 @@ refs.startBtn.addEventListener('click', () => {
     refs.startBtn.disabled = timerId;
     refs.stopBtn.disabled = false;
 
-    console.log('start');
+    
     
 });
 

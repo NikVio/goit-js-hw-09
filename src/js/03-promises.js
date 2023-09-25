@@ -1,56 +1,48 @@
+import Notiflix from 'notiflix';
+
+const form = document.querySelector('.form'); 
 
 
+form.addEventListener('submit', onSubmit);
 
-let firstDelay = [];
-let delayStep = {};
-let amount = {};
+function createPromise(position, delay) {
 
-
-// const refs = {
-//   form: document.querySelector('.form'),
-//   //delay: document.querySelector('input[name="delay"]'),
-//   //step: document.querySelector('input[name="step"]'),
-//   //amount: document.querySelector('input[name="amount"]'),
-//   submitBtn: document.querySelector('button'),
-// }
-
-const form = document.querySelector('.form');
-
-console.log(form);
-
-// const array = [...form.children].map(el => el);
-// console.log(array);
-firstDelay[form] = form.lastElementChild;
-console.log(firstDelay);
-
-// console.log(array);
+    return new Promise((resolve, reject) => {
+        const shouldResolve = Math.random() > 0.3;
+        setTimeout(() => {
+            if (shouldResolve) {
+                resolve({ position, delay });
+            } else {
+                reject({position, delay})
+            }
+        }, delay);
+    });
+}
 
 
+ 
 
+function onSubmit(evt) {
+    evt.preventDefault();
+    const { delay, step, amount } = evt.currentTarget.elements;
+    let delayInput = Number(delay.value);
+    let stepInput = Number(step.value);
+    let amountInput = Number(amount.value);
 
+    
 
-  
+    for (let i = 1; i <= amountInput; i += 1) {
+        
+        
 
-
-
-
-
-
-// createPromise(2, 1500)
-//   .then(({ position, delay }) => {
-//     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-//   })
-//   .catch(({ position, delay }) => {
-//     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-//   });
-
-
-
-// function createPromise(position, delay) {
-//   const shouldResolve = Math.random() > 0.3;
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
+        createPromise(i, delayInput)
+            .then(({ position, delay }) => {
+                Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+            })
+  .catch(({ position, delay }) => {
+    Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+  });
+        delayInput += stepInput;
+    };
+     evt.target.reset();
+};
